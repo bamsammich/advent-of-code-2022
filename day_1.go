@@ -49,7 +49,7 @@ func (day *Day1Puzzle) Solution() (any, error) {
 		one, two int
 	}{
 		one: elfCals[len(elfCals)-1],
-		two: sumInts(elfCals[len(elfCals)-3 : len(elfCals)]),
+		two: sumInts(elfCals[len(elfCals)-3:]),
 	}, nil
 }
 
