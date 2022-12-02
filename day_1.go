@@ -46,10 +46,10 @@ func (day *Day1Puzzle) Solution() (any, error) {
 	}
 	sort.Ints(elfCals)
 	return struct {
-		one, two int
+		first, second int
 	}{
-		one: elfCals[len(elfCals)-1],
-		two: sumInts(elfCals[len(elfCals)-3:]),
+		first:  elfCals[len(elfCals)-1],
+		second: sumInts(elfCals[len(elfCals)-3:]),
 	}, nil
 }
 

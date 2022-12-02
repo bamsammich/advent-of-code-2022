@@ -43,8 +43,7 @@ func (day *Day2Puzzle) Solution() (any, error) {
 	}
 
 	return struct {
-		first  int
-		second int
+		first, second int
 	}{
 		first:  scorePartOne,
 		second: scorePartTwo,
