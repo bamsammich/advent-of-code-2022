@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sort"
 	"strconv"
+	"time"
 
 	"github.com/echojc/aocutil"
 )
@@ -19,6 +20,7 @@ func (day *Day1Puzzle) Name() string {
 }
 
 func (day *Day1Puzzle) Solution() (*Result, error) {
+	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -46,8 +48,9 @@ func (day *Day1Puzzle) Solution() (*Result, error) {
 	}
 	sort.Ints(elfCals)
 	return &Result{
-		First:  elfCals[len(elfCals)-1],
-		Second: sumInts(elfCals[len(elfCals)-3:]),
+		First:    elfCals[len(elfCals)-1],
+		Second:   sumInts(elfCals[len(elfCals)-3:]),
+		Duration: time.Now().Sub(begin),
 	}, nil
 }
 

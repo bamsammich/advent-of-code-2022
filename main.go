@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
+	"time"
 )
 
 type Puzzle interface {
@@ -11,8 +13,21 @@ type Puzzle interface {
 }
 
 type Result struct {
-	First  any `json:"first" yaml:"first"`
-	Second any `json:"second" yaml:"second"`
+	First    any
+	Second   any
+	Duration time.Duration
+}
+
+func (r *Result) MarshalJSON() ([]byte, error) {
+	return json.Marshal(&struct {
+		First    any    `json:"first"`
+		Second   any    `json:"second"`
+		Duration string `json:"duration"`
+	}{
+		First:    r.First,
+		Second:   r.Second,
+		Duration: r.Duration.String(),
+	})
 }
 
 var puzzles []Puzzle

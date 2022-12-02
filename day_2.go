@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/echojc/aocutil"
 )
 
@@ -27,6 +29,7 @@ var scoresPartTwo = map[string]int{
 }
 
 func (day *Day2Puzzle) Solution() (*Result, error) {
+	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -43,7 +46,8 @@ func (day *Day2Puzzle) Solution() (*Result, error) {
 	}
 
 	return &Result{
-		First:  scorePartOne,
-		Second: scorePartTwo,
+		First:    scorePartOne,
+		Second:   scorePartTwo,
+		Duration: time.Now().Sub(begin),
 	}, nil
 }
