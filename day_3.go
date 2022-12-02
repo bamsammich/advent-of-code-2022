@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 func init() {
 	puzzles = append(puzzles, &Day3Puzzle{})
 }
@@ -11,6 +13,7 @@ func (day *Day3Puzzle) Name() string {
 }
 
 func (day *Day3Puzzle) Solution() (*Result, error) {
+	begin := time.Now()
 	// i, err := aocutil.NewInputFromFile("session_id")
 	// if err != nil {
 	// 	return nil, err
@@ -20,5 +23,9 @@ func (day *Day3Puzzle) Solution() (*Result, error) {
 	// if err != nil {
 	// 	return nil, err
 	// }
-	return nil, nil
+	return &Result{
+		First:    nil,
+		Second:   nil,
+		Duration: time.Now().Sub(begin),
+	}, nil
 }
