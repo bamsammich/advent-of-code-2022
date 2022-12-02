@@ -20,4 +20,5 @@ func (day *Day3Puzzle) Solution() (*Result, error) {
 	// if err != nil {
 	// 	return nil, err
 	// }
+	return nil, nil
 }
