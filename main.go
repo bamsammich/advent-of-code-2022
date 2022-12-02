@@ -7,18 +7,25 @@ import (
 
 type Puzzle interface {
 	Name() string
-	Solution() (any, error)
+	Solution() (*Result, error)
+}
+
+type Result struct {
+	First  any `json:"first" yaml:"first"`
+	Second any `json:"second" yaml:"second"`
 }
 
 var puzzles []Puzzle
 
 func main() {
+	results := make(map[string]*Result)
 	for _, p := range puzzles {
 		solution, err := p.Solution()
 		if err != nil {
 			log.Fatalf("failed to solve puzzle %s: %v", p.Name(), err)
 			continue
 		}
-		fmt.Printf("Puzzle %s: %+v\n", p.Name(), solution)
+		results[p.Name()] = solution
 	}
+	fmt.Println(PrettyJSON(&results))
 }

@@ -11,7 +11,7 @@ func init() {
 type Day2Puzzle struct{}
 
 func (day *Day2Puzzle) Name() string {
-	return "Day 2"
+	return "day_2"
 }
 
 var scoresPartOne = map[string]int{
@@ -26,7 +26,7 @@ var scoresPartTwo = map[string]int{
 	"C X": 2, "C Y": 6, "C Z": 7,
 }
 
-func (day *Day2Puzzle) Solution() (any, error) {
+func (day *Day2Puzzle) Solution() (*Result, error) {
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -42,10 +42,8 @@ func (day *Day2Puzzle) Solution() (any, error) {
 		scorePartTwo += scoresPartTwo[round]
 	}
 
-	return struct {
-		first, second int
-	}{
-		first:  scorePartOne,
-		second: scorePartTwo,
+	return &Result{
+		First:  scorePartOne,
+		Second: scorePartTwo,
 	}, nil
 }

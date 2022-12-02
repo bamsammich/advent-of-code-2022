@@ -15,10 +15,10 @@ func init() {
 type Day1Puzzle struct{}
 
 func (day *Day1Puzzle) Name() string {
-	return "Day 1"
+	return "day_1"
 }
 
-func (day *Day1Puzzle) Solution() (any, error) {
+func (day *Day1Puzzle) Solution() (*Result, error) {
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -45,11 +45,9 @@ func (day *Day1Puzzle) Solution() (any, error) {
 		calSum += cal
 	}
 	sort.Ints(elfCals)
-	return struct {
-		first, second int
-	}{
-		first:  elfCals[len(elfCals)-1],
-		second: sumInts(elfCals[len(elfCals)-3:]),
+	return &Result{
+		First:  elfCals[len(elfCals)-1],
+		Second: sumInts(elfCals[len(elfCals)-3:]),
 	}, nil
 }
 
