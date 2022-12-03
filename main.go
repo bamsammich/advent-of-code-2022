@@ -33,6 +33,7 @@ func (r *Result) MarshalJSON() ([]byte, error) {
 var puzzles []Puzzle
 
 func main() {
+	var totalDuration int64
 	results := make(map[string]*Result)
 	for _, p := range puzzles {
 		solution, err := p.Solution()
@@ -41,6 +42,8 @@ func main() {
 			continue
 		}
 		results[p.Name()] = solution
+		totalDuration += solution.Duration.Nanoseconds()
 	}
 	fmt.Println(PrettyJSON(&results))
+	fmt.Printf("Total duration: %s\n", time.Duration(totalDuration))
 }
