@@ -24,7 +24,7 @@ func (day *Day5Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 
-	data, err := i.Strings(2022, 4)
+	data, err := i.Strings(2022, 5)
 	if err != nil {
 		return nil, err
 	}
