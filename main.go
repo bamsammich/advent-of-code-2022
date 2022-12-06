@@ -1,14 +1,11 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"log"
 	"os"
 	"text/template"
 	"time"
-
-	"github.com/shurcooL/markdownfmt/markdown"
 )
 
 type Puzzle interface {
@@ -53,23 +50,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, map[string]any{
-		"results":       results,
-		"totalDuration": time.Duration(totalDuration),
-	}); err != nil {
-		log.Fatal(err)
-	}
-
 	f, err := os.Create("README.md")
 	defer f.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
-	b, err := markdown.Process(f.Name(), buf.Bytes(), &markdown.Options{Terminal: false})
-	if err != nil {
+	if err := tmpl.Execute(f, map[string]any{
+		"results":       results,
+		"totalDuration": time.Duration(totalDuration),
+	}); err != nil {
 		log.Fatal(err)
 	}
-
-	f.Write(b)
 }
