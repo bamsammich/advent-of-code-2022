@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/echojc/aocutil"
@@ -43,7 +42,6 @@ func (day *Day6Puzzle) Solution() (*Result, error) {
 		packet := stream[i : i+14]
 		if unique([]rune(packet)) {
 			puzzleTwo = i + 14
-			fmt.Println(packet)
 			break
 		}
 	}
