@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"regexp"
 	"sort"
@@ -44,7 +43,6 @@ func (day *Day7Puzzle) Solution() (*Result, error) {
 		puzzleTwo   []int
 		spaceNeeded = 30000000 - (70000000 - sizes["/"])
 	)
-	fmt.Printf("space needed to be freed: %d\n", spaceNeeded)
 	for _, size := range sizes {
 		if size < 100000 {
 			puzzleOne += size
