@@ -13,10 +13,16 @@ func init() {
 	puzzles = append(puzzles, &Day1Puzzle{})
 }
 
+var dayNumber = 1
+
 type Day1Puzzle struct{}
 
+func (day *Day1Puzzle) Number() int {
+	return 1
+}
+
 func (day *Day1Puzzle) Name() string {
-	return "day_1"
+	return fmt.Sprintf("day_%02d", day.Number())
 }
 
 func (day *Day1Puzzle) Solution() (*Result, error) {
@@ -26,7 +32,7 @@ func (day *Day1Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 
-	data, err := i.Strings(2022, 1)
+	data, err := i.Strings(2022, dayNumber)
 	if err != nil {
 		return nil, err
 	}

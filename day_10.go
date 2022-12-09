@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -10,8 +11,12 @@ func init() {
 
 type Day10Puzzle struct{}
 
+func (day *Day10Puzzle) Number() int {
+	return 10
+}
+
 func (day *Day10Puzzle) Name() string {
-	return "day_10"
+	return fmt.Sprintf("day_%02d", day.Number())
 }
 
 func (day *Day10Puzzle) Solution() (*Result, error) {
@@ -21,7 +26,7 @@ func (day *Day10Puzzle) Solution() (*Result, error) {
 	// 	return nil, err
 	// }
 
-	// data, err := i.Strings(2022, 10)
+	// data, err := i.Strings(2022,  day.Number())
 	// if err != nil {
 	// 	return nil, err
 	// }

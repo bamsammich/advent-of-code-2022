@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/echojc/aocutil"
@@ -12,8 +13,12 @@ func init() {
 
 type Day3Puzzle struct{}
 
+func (day *Day3Puzzle) Number() int {
+	return 3
+}
+
 func (day *Day3Puzzle) Name() string {
-	return "day_3"
+	return fmt.Sprintf("day_%02d", day.Number())
 }
 
 var letterValues = map[rune]int{
@@ -30,7 +35,7 @@ func (day *Day3Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 
-	data, err := i.Strings(2022, 3)
+	data, err := i.Strings(2022, day.Number())
 	if err != nil {
 		return nil, err
 	}

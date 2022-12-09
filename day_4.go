@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -14,8 +15,12 @@ func init() {
 
 type Day4Puzzle struct{}
 
+func (day *Day4Puzzle) Number() int {
+	return 4
+}
+
 func (day *Day4Puzzle) Name() string {
-	return "day_4"
+	return fmt.Sprintf("day_%02d", day.Number())
 }
 
 type Section struct {
@@ -53,7 +58,7 @@ func (day *Day4Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 
-	data, err := i.Strings(2022, 4)
+	data, err := i.Strings(2022, day.Number())
 	if err != nil {
 		return nil, err
 	}

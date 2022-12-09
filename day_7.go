@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"regexp"
 	"sort"
@@ -17,8 +18,12 @@ func init() {
 
 type Day7Puzzle struct{}
 
+func (day *Day7Puzzle) Number() int {
+	return 7
+}
+
 func (day *Day7Puzzle) Name() string {
-	return "day_7"
+	return fmt.Sprintf("day_%02d", day.Number())
 }
 
 func (day *Day7Puzzle) Solution() (*Result, error) {
@@ -28,7 +33,7 @@ func (day *Day7Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 
-	data, err := i.Strings(2022, 7)
+	data, err := i.Strings(2022, day.Number())
 	if err != nil {
 		return nil, err
 	}
