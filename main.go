@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"text/template"
@@ -62,5 +61,5 @@ func main() {
 	}); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(PrettyJSON(results))
+	// fmt.Println(PrettyJSON(results))
 }
