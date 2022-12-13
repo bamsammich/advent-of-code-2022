@@ -12,7 +12,7 @@ func init() {
 type Day12Puzzle struct{}
 
 func (day *Day12Puzzle) Number() int {
-	return 11
+	return 12
 }
 
 func (day *Day12Puzzle) Name() string {
