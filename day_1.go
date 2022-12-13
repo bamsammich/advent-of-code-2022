@@ -59,11 +59,3 @@ func (day *Day1Puzzle) Solution() (*Result, error) {
 		Duration: time.Now().Sub(begin),
 	}, nil
 }
-
-func sumInts(ints []int) int {
-	var sum = 0
-	for _, i := range ints {
-		sum += i
-	}
-	return sum
-}
