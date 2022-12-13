@@ -62,8 +62,6 @@ func (day *Day10Puzzle) Solution() (*Result, error) {
 		register += val
 	}
 
-	fmt.Println(strings.Join(drawCRT(puzzleTwo.String(), rowLength), "\n"))
-
 	return &Result{
 		First:    sumInts(puzzleOne),
 		Second:   drawCRT(puzzleTwo.String(), rowLength),
