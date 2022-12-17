@@ -72,7 +72,7 @@ func (day *Day11Puzzle) Solution() (*Result, error) {
 	sort.Ints(puzzleOne)
 	return &Result{
 		First:    product(puzzleOne[len(puzzleOne)-2:]),
-		Second:   product(puzzleTwo[len(puzzleTwo)-2:]),
+		Second:   nil,
 		Duration: time.Now().Sub(begin),
 	}, nil
 }
