@@ -40,13 +40,13 @@ func (day *Day11Puzzle) Solution() (*Result, error) {
 	var (
 		monkeyData = strings.Split(strings.Join(data, "\n"), "\n\n")
 		monkeysOne = make([]*Monkey, len(monkeyData))
-		monkeysTwo = make([]*Monkey, len(monkeyData))
+		// monkeysTwo = make([]*Monkey, len(monkeyData))
 	)
 	for _, mData := range monkeyData {
 		one := MonkeyFromString(mData)
-		two := MonkeyFromString(mData)
+		// two := MonkeyFromString(mData)
 		monkeysOne[one.ID] = &one
-		monkeysTwo[two.ID] = &two
+		// monkeysTwo[two.ID] = &two
 	}
 
 	for i := 0; i < 10000; i++ {
@@ -55,18 +55,18 @@ func (day *Day11Puzzle) Solution() (*Result, error) {
 				monkeysOne[i].Throw(monkeysOne, 3)
 			}
 		}
-		for i := range monkeysTwo {
-			monkeysTwo[i].Throw(monkeysTwo, 1)
-		}
+		// for i := range monkeysTwo {
+		// 	monkeysTwo[i].Throw(monkeysTwo, 1)
+		// }
 	}
 
 	var (
 		puzzleOne []int
-		puzzleTwo []int
+		// puzzleTwo []int
 	)
 	for i := range monkeysOne {
 		puzzleOne = append(puzzleOne, monkeysOne[i].InspectCount)
-		puzzleTwo = append(puzzleTwo, monkeysTwo[i].InspectCount)
+		// puzzleTwo = append(puzzleTwo, monkeysTwo[i].InspectCount)
 	}
 
 	sort.Ints(puzzleOne)
