@@ -39,9 +39,10 @@ func (day *Day12Puzzle) Solution() (*Result, error) {
 		return nil, err
 	}
 	var (
-		start = Position{0, 20}
-		end   = Position{137, 20}
-		graph = NewGraph()
+		start         = Position{0, 20}
+		end           = Position{137, 20}
+		graph         = NewGraph()
+		lowElevations []Position
 	)
 	for y := range data {
 		for x, ch := range data[y] {
@@ -50,6 +51,9 @@ func (day *Day12Puzzle) Solution() (*Result, error) {
 				edges     = graph.GetEdges(pos)
 				neighbors = pos.CardinalNeighbors()
 			)
+			if ch == 'a' {
+				lowElevations = append(lowElevations, pos)
+			}
 			for _, n := range neighbors {
 				if n.X < 0 || n.Y < 0 || n.X > len(data[0])-1 || n.Y > len(data)-1 {
 					continue // out of bounds
@@ -74,13 +78,26 @@ func (day *Day12Puzzle) Solution() (*Result, error) {
 	}
 
 	_, puzzleOne := graph.GetPath(start, end)
+
+	var puzzleTwo []Position
+	for _, e := range lowElevations {
+		_, path := graph.GetPath(e, end)
+		if len(puzzleTwo) == 0 {
+			puzzleTwo = path
+			continue
+		}
+		if len(path) > 0 && len(path) < len(puzzleTwo) {
+			puzzleTwo = path
+		}
+	}
 	return &Result{
 		First:    len(puzzleOne) - 1,
-		Second:   nil,
+		Second:   len(puzzleTwo) - 1,
 		Duration: time.Now().Sub(begin),
 	}, nil
 }
 
+// Dijkstra solution found at https://dev.to/douglasmakey/implementation-of-dijkstra-using-heap-in-go-6e3
 type Path struct {
 	Value int
 	Nodes []Position
