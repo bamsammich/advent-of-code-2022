@@ -70,7 +70,6 @@ func (day *Day11Puzzle) Solution() (*Result, error) {
 	}
 
 	sort.Ints(puzzleOne)
-	fmt.Println(monkeysTwo)
 	return &Result{
 		First:    product(puzzleOne[len(puzzleOne)-2:]),
 		Second:   product(puzzleTwo[len(puzzleTwo)-2:]),

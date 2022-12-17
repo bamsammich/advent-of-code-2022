@@ -24,3 +24,21 @@ func product[V int | float64](vals []V) V {
 	}
 	return product
 }
+
+func index[T comparable](sl []T, e T) int {
+	for i := range sl {
+		if sl[i] == e {
+			return i
+		}
+	}
+	return -1
+}
+
+func removeAll[T comparable](sl []T, e T) []T {
+	for i, c := range sl {
+		if c == e {
+			sl = append(sl[:i], sl[i+1:]...)
+		}
+	}
+	return sl
+}
