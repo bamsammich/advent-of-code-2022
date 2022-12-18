@@ -28,7 +28,6 @@ var lowercase = []rune{
 }
 
 func (day *Day12Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -38,6 +37,8 @@ func (day *Day12Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
+
 	var (
 		start         = Position{0, 20}
 		end           = Position{137, 20}

@@ -24,7 +24,6 @@ func (day *Day8Puzzle) Name() string {
 }
 
 func (day *Day8Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -34,6 +33,7 @@ func (day *Day8Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
 
 	grid := NewGrid(len(data), len(data[0]))
 	for y, row := range data {

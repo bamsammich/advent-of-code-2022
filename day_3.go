@@ -29,7 +29,6 @@ var letterValues = map[rune]int{
 }
 
 func (day *Day3Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -39,6 +38,8 @@ func (day *Day3Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
+
 	var firstPuzzle = 0
 	for _, ruck := range data {
 		compartmentOne := ruck[:len(ruck)/2]

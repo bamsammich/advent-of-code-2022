@@ -29,7 +29,6 @@ type day5Move struct {
 }
 
 func (day *Day5Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -39,6 +38,7 @@ func (day *Day5Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
 
 	stacks := make([][]string, 9)
 	for i := 7; i >= 0; i-- {

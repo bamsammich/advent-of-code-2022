@@ -20,7 +20,6 @@ func (day *Day13Puzzle) Name() string {
 }
 
 func (day *Day13Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	// i, err := aocutil.NewInputFromFile("session_id")
 	// if err != nil {
 	// 	return nil, err
@@ -30,8 +29,8 @@ func (day *Day13Puzzle) Solution() (*Result, error) {
 	// if err != nil {
 	// 	return nil, err
 	// }
-
 	// fmt.Println(data)
+	begin := time.Now()
 
 	return &Result{
 		First:    nil,

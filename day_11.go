@@ -27,7 +27,6 @@ func (day *Day11Puzzle) Name() string {
 }
 
 func (day *Day11Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -37,6 +36,8 @@ func (day *Day11Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
+
 	var (
 		monkeyData = strings.Split(strings.Join(data, "\n"), "\n\n")
 		monkeysOne = make([]*Monkey, len(monkeyData))

@@ -26,7 +26,6 @@ func (day *Day1Puzzle) Name() string {
 }
 
 func (day *Day1Puzzle) Solution() (*Result, error) {
-	begin := time.Now()
 	i, err := aocutil.NewInputFromFile("session_id")
 	if err != nil {
 		return nil, err
@@ -36,6 +35,8 @@ func (day *Day1Puzzle) Solution() (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	begin := time.Now()
+
 	var (
 		elfCals []int
 		calSum  = 0
