@@ -37,7 +37,7 @@ func (day *Day6Puzzle) Solution() (*Result, error) {
 	var puzzleOne int
 	for i := 0; i+3 < len(stream); i++ {
 		packet := stream[i : i+4]
-		if unique([]rune(packet)) {
+		if isUnique([]rune(packet)) {
 			puzzleOne = i + 4
 			break
 		}
@@ -46,7 +46,7 @@ func (day *Day6Puzzle) Solution() (*Result, error) {
 	var puzzleTwo int
 	for i := 0; i+13 < len(stream); i++ {
 		packet := stream[i : i+14]
-		if unique([]rune(packet)) {
+		if isUnique([]rune(packet)) {
 			puzzleTwo = i + 14
 			break
 		}
@@ -57,15 +57,4 @@ func (day *Day6Puzzle) Solution() (*Result, error) {
 		Second:   puzzleTwo,
 		Duration: time.Now().Sub(begin),
 	}, nil
-}
-
-func unique[T comparable](sl []T) bool {
-	uniq := make(map[T]bool)
-	for _, e := range sl {
-		if ok := uniq[e]; ok {
-			return false
-		}
-		uniq[e] = true
-	}
-	return true
 }

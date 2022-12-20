@@ -42,3 +42,26 @@ func removeAll[T comparable](sl []T, e T) []T {
 	}
 	return sl
 }
+
+func unique[T comparable](sl []T) []T {
+	uniq := make(map[T]bool)
+	for _, e := range sl {
+		uniq[e] = true
+	}
+	var out []T
+	for k := range uniq {
+		out = append(out, k)
+	}
+	return out
+}
+
+func isUnique[T comparable](sl []T) bool {
+	uniq := make(map[T]bool)
+	for _, e := range sl {
+		if ok := uniq[e]; ok {
+			return false
+		}
+		uniq[e] = true
+	}
+	return true
+}
